@@ -38,10 +38,6 @@ jobs:
                 uses: docker://damienlagae/phpqa:7.3
                 with:
                     args: phpmd ./src/ ansi ./codesize.xml
-            -   name: Twig lint
-                uses: docker://damienlagae/phpqa:7.3
-                with:
-                    args: twig lint ./templates
 
     unit-tests:
         name: Unit Tests (PHP ${{ matrix.php-versions }})

@@ -1,4 +1,7 @@
 # Symfony + local development
+
+[![CI](https://github.com/damienlagae/symfony-local/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/damienlagae/symfony-local/actions/workflows/build.yml)
+
 Provide local development tools for Symfony project
 
 ## Included tools
