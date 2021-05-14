@@ -18,7 +18,9 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v2
             - name: Security checker
-              run: make security
+              uses: docker://damienlagae/phpqa:7.3
+              with:
+                  args: local-php-security-checker
 
     coding-standards:
         name: Coding standards check
@@ -33,7 +35,7 @@ jobs:
             -   name: PHPStan
                 uses: docker://damienlagae/phpqa:7.3
                 with:
-                    args: phpstan analyze ./src/ -l 1
+                    args: phpstan analyze ./src/ -l 8
             -   name: PHP Mess Detector
                 uses: docker://damienlagae/phpqa:7.3
                 with:
