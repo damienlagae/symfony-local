@@ -27,6 +27,9 @@ class InstallTest extends TestCase
         $command = $this->application->find('install');
 
         $commandTester = new CommandTester($command);
+        $commandTester->setInputs([
+            InstallCommand::PHP_DEFAULT, 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'
+        ]);
         $commandTester->execute(['command' => $command->getName()]);
 
         $this->assertSame(0, $commandTester->getStatusCode());
@@ -73,19 +76,22 @@ class InstallTest extends TestCase
         $command = $this->application->find('install');
 
         $commandTester = new CommandTester($command);
+        $commandTester->setInputs([
+            InstallCommand::PHP_DEFAULT, 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'
+        ]);
         $commandTester->execute(['command' => $command->getName()]);
 
         $this->assertSame(0, $commandTester->getStatusCode());
         $this->assertStringContainsString(
-            '[OK] Directory [.docker/database/data] and file [.docker/database/data/.gitkeep] has been created.',
+            '[OK] Directory [.docker/database/data]',
             $commandTester->getDisplay()
         );
         $this->assertStringContainsString(
-            '[OK] Directory [.docker/cache/data] and file [.docker/cache/data/.gitkeep] has been created.',
+            '[OK] Directory [.docker/cache/data]',
             $commandTester->getDisplay()
         );
         $this->assertStringContainsString(
-            '[OK] Directory [.docker/queue/data] and file [.docker/queue/data/.gitkeep] has been created.',
+            '[OK] Directory [.docker/queue/data]',
             $commandTester->getDisplay()
         );
     }
@@ -95,6 +101,9 @@ class InstallTest extends TestCase
         $command = $this->application->find('install');
 
         $commandTester = new CommandTester($command);
+        $commandTester->setInputs([
+            InstallCommand::PHP_DEFAULT, 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'
+        ]);
         $commandTester->execute(['command' => $command->getName()]);
 
         $this->assertSame(0, $commandTester->getStatusCode());

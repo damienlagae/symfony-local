@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace DLG\SymfonyLocal\Command;
 
-use phpDocumentor\Reflection\Types\Self_;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ChoiceQuestion;
@@ -28,8 +27,13 @@ final class InstallCommand extends AbstractCommand
     protected function configure(): void
     {
         $this
-            ->setDescription('Create configuration files of SymfonyLocal')
-            ->setHelp('The <info>install</info> command create preconfigured files to root folder of the project.');
+            ->setDescription(
+                'Create configuration files of SymfonyLocal'
+            )
+            ->setHelp(
+                'The <info>install</info> command create preconfigured files to root folder of the project.'
+            )
+        ;
     }
 
     /**

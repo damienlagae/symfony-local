@@ -41,6 +41,9 @@ class InstallCommandTest extends TestCase
 
         $command = $application->find('install');
         $commandTester = new CommandTester($command);
+        $commandTester->setInputs([
+            InstallCommand::PHP_DEFAULT, 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'
+        ]);
         $commandTester->execute(['command' => $command->getName()]);
 
         $this->assertSame(0, $commandTester->getStatusCode());

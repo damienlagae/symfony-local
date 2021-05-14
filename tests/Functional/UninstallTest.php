@@ -32,6 +32,9 @@ class UninstallTest extends TestCase
         $command = $this->application->find('uninstall');
 
         $commandTester = new CommandTester($command);
+        $commandTester->setInputs([
+            'yes'
+        ]);
         $commandTester->execute(['command' => $command->getName()]);
 
         $this->assertSame(0, $commandTester->getStatusCode());
