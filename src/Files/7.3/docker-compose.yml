@@ -11,12 +11,16 @@ services:
       MYSQL_PASSWORD: toor
     ports:
       - 3306
+    labels:
+      com.symfony.server.service-prefix: 'DATABASE'
 
   mailer:
     image: schickling/mailcatcher
     ports:
       - 1025
       - 1080
+    labels:
+      com.symfony.server.service-prefix: 'MAILER'
 
   cache:
     image: redis
@@ -24,6 +28,8 @@ services:
       - .docker/cache/data:/data
     ports:
       - 6379
+    labels:
+      com.symfony.server.service-prefix: 'REDIS'
 
   queue:
     image: rabbitmq:3-management
@@ -34,6 +40,8 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: admin
       RABBITMQ_DEFAULT_PASS: admin
+    labels:
+      com.symfony.server.service-prefix: 'RABBITMQ'
 
   yarn:
     image: node:12-alpine
