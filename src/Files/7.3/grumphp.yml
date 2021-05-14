@@ -1,0 +1,59 @@
+# https://github.com/phpro/grumphp
+grumphp:
+    stop_on_failure: false
+    git_hook_variables:
+        EXEC_GRUMPHP_COMMAND: './symfony php'
+    process_timeout: 120
+    parallel:
+        enabled: true
+        max_workers: 20
+    # https://github.com/phpro/grumphp/blob/master/doc/tasks.md
+    tasks:
+        composer: ~
+        git_blacklist:
+            keywords:
+                - "die"
+                - "var_dump"
+                - "exit;"
+                - "echo "
+                - "dump"
+                - "dd"
+            regexp_type: G
+            whitelist_patterns:
+                - /^public\/(.*)/
+                - /^vendor\/(.*)/
+        clover_coverage:
+            clover_file: ./build/coverage.xml
+            level: 1 # Should be adapted to 50-70
+        code_sniffer:
+            make_file: ~
+            task: codesniffer
+            triggered_by: [ php ]
+            metadata:
+                task: make
+        mess_detector:
+            make_file: ~
+            task: mess
+            triggered_by: [ php ]
+            metadata:
+                task: make
+        php_stan:
+            make_file: ~
+            task: stan
+            triggered_by: [ php ]
+            metadata:
+                task: make
+        twig_lint:
+            make_file: ~
+            task: twig
+            triggered_by: [ twig ]
+            metadata:
+                task: make
+        security_checker:
+            make_file: ~
+            task: security
+            metadata:
+                task: make
+        phpunitbridge:
+            always_execute: true
+        yamllint: ~
