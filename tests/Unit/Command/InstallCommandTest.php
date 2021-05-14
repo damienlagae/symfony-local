@@ -53,5 +53,6 @@ class InstallCommandTest extends TestCase
     {
         yield ['7.3', 0];
         yield ['7.4', 0];
+        yield ['8.0', 0];
     }
 }

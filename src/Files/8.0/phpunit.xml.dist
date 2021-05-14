@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
+         backupGlobals="false"
+         colors="true"
+         cacheResultFile=".phpunit.cache/test-results"
+         bootstrap="tests/bootstrap.php"
+>
+    <php>
+        <ini name="error_reporting" value="-1"/>
+        <ini name="memory_limit" value="-1"/>
+        <env name="APP_ENV" value="test" force="true"/>
+        <env name="KERNEL_CLASS" value="App\Kernel"/>
+        <env name="SYMFONY_PHPUNIT_VERSION" value="9.5"/>
+        <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak"/>
+        <server name="SYMFONY_PHPUNIT_REMOVE" value=""/>
+    </php>
+
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Functional">
+            <directory>tests/Functional</directory>
+        </testsuite>
+    </testsuites>
+
+    <listeners>
+        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>
+        <listener class="Symfony\Bridge\PhpUnit\CoverageListener"/>
+    </listeners>
+
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">.</directory>
+        </include>
+        <exclude>
+            <directory>./tests</directory>
+            <directory>./vendor</directory>
+            <directory>./public</directory>
+            <directory>./config</directory>
+            <directory>./var</directory>
+            <directory>./bin</directory>
+            <directory>./migrations</directory>
+            <directory>./src/DataFixtures</directory>
+            <directory>./src/Entity</directory>
+            <directory>./src/Files</directory>
+            <directory>./src/Migrations/</directory>
+            <file>./src/Kernel.php</file>
+        </exclude>
+        <report>
+            <clover outputFile="build/coverage.xml"/>
+            <html outputDirectory="build/coverage/"/>
+        </report>
+    </coverage>
+</phpunit>

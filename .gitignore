@@ -8,13 +8,13 @@ composer.phar
 bin/.phpunit
 
 ### Other tools
-.github/workflows/symfony.yml
-.php-version
-docker-compose.yml
-grumphp.yml
-Makefile
+/.github/workflows/symfony.yml
+/.php-version
+/docker-compose.yml
+/grumphp.yml
+/Makefile
 symfony
-yarn.sh
+/yarn.sh
 build/
 var/
 
