@@ -1,0 +1,28 @@
+### Composer
+vendor/
+composer.lock
+composer.phar
+
+### PHPUnit
+.phpunit.cache
+bin/.phpunit
+
+### Other tools
+.github/workflows/symfony.yml
+.php-version
+docker-compose.yml
+grumphp.yml
+Makefile
+symfony
+yarn.sh
+build/
+var/
+
+###> damienlagae/symfony-local ###
+.docker/database/data
+!.docker/database/data/.gitkeep
+.docker/cache/data
+!.docker/cache/data/.gitkeep
+.docker/queue/data
+!.docker/queue/data/.gitkeep
+###< damienlagae/symfony-local ###
