@@ -52,5 +52,6 @@ class InstallCommandTest extends TestCase
     public function provideVersionData()
     {
         yield ['7.3', 0];
+        yield ['7.4', 0];
     }
 }

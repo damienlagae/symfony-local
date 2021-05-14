@@ -1,0 +1,70 @@
+version: '3'
+services:
+  database:
+    image: mariadb:10.1.29
+    volumes:
+      - .docker/database/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_DATABASE: main
+      MYSQL_USER: root
+      MYSQL_PASSWORD: toor
+    ports:
+      - 3306
+    labels:
+      com.symfony.server.service-prefix: 'DATABASE'
+
+  mailer:
+    image: schickling/mailcatcher
+    ports:
+      - 1025
+      - 1080
+    labels:
+      com.symfony.server.service-prefix: 'MAILER'
+
+  cache:
+    image: redis
+    volumes:
+      - .docker/cache/data:/data
+    ports:
+      - 6379
+    labels:
+      com.symfony.server.service-prefix: 'REDIS'
+
+  queue:
+    image: rabbitmq:3-management
+    volumes:
+      - .docker/queue/data:/data
+    ports:
+      - 15672
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+    labels:
+      com.symfony.server.service-prefix: 'RABBITMQ'
+
+  yarn:
+    image: node:12-alpine
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: ["yarn.sh"]
+
+  phpqa:
+    image: damienlagae/phpqa:7.4
+    volumes:
+      - ./:/project
+      - ./var/cache/phpqa/tmp:/tmp
+    working_dir: /project
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOSTS: database
+      PMA_USER: root
+      PMA_PASSWORD: toor
+      UPLOAD_LIMIT: '20480000'
+    ports:
+      - 80
+    depends_on:
+      - database

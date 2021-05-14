@@ -39,7 +39,8 @@ class AbstractCommand extends Command
      * @const array PHP_VERSIONS
      */
     protected const PHP_VERSIONS = [
-        '7.3'
+        '7.3',
+        '7.4'
     ];
 
     /**
