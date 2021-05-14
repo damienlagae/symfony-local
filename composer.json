@@ -31,5 +31,12 @@
     "config": {
         "sort-packages": true
     },
-    "bin": ["bin/symfony-local"]
+    "bin": [
+        "bin/symfony-local"
+    ],
+    "scripts": {
+        "post-install-cmd": [
+            "DLG\\SymfonyLocal\\Composer\\Integrator::integrate"
+        ]
+    }
 }
