@@ -1,6 +1,8 @@
 # Symfony + local development
 
 [![CI](https://github.com/damienlagae/symfony-local/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/damienlagae/symfony-local/actions/workflows/build.yml)
+[![Latest Stable Version](https://poser.pugx.org/damienlagae/symfony-local/v)](//packagist.org/packages/damienlagae/symfony-local)
+[![License](https://poser.pugx.org/damienlagae/symfony-local/license)](//packagist.org/packages/damienlagae/symfony-local)
 
 Provide local development tools for Symfony project
 
