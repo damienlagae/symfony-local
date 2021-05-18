@@ -1,10 +1,12 @@
 # Setup ————————————————————————————————————————————————————————————————————————
 SHELL         = bash
+USER 		  = $(shell id -u)
+GROUP		  = $(shell id -g)
 SYMFONY_BIN   = ./symfony
 EXEC_PHP      = $(SYMFONY_BIN) php
 SYMFONY       = $(SYMFONY_BIN) console
 COMPOSER      = $(EXEC_PHP) composer.phar
-DOCKER        = docker-compose
+DOCKER        = USER_ID=$(USER) GROUP_ID=$(GROUP) docker-compose
 PHPUNIT       = $(EXEC_PHP) bin/phpunit
 PHPQA		  = $(DOCKER) run --rm phpqa
 YARN          = $(DOCKER) run --rm yarn yarn

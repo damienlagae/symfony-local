@@ -37,6 +37,7 @@ services:
       - .docker/queue/data:/data
     ports:
       - 15672
+      - 5672
     environment:
       RABBITMQ_DEFAULT_USER: admin
       RABBITMQ_DEFAULT_PASS: admin
