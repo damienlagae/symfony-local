@@ -7,17 +7,16 @@ namespace DLG\SymfonyLocal\Composer;
 use Composer\Script\Event;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
-use Symfony\Component\Process\ProcessBuilder;
 
 /**
  * @author Damien Lagae <damienlagae@gmail.com>
  */
-class Integrator
+class ComposerInstaller
 {
     /**
      * This method makes sure that SymfonyLocal registers itself during installation.
      */
-    public static function integrate(Event $event): void
+    public static function postInstall(Event $event): void
     {
         $filesystem = new Filesystem();
 

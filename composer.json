@@ -35,8 +35,8 @@
         "bin/symfony-local"
     ],
     "scripts": {
-        "post-install-cmd": [
-            "DLG\\SymfonyLocal\\Composer\\Integrator::integrate"
+        "post-package-cmd": [
+            "DLG\\SymfonyLocal\\Composer\\ComposerInstaller::postInstall"
         ]
     }
 }
